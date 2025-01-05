@@ -2,10 +2,23 @@ enable
 configure terminal
 hostname Switch1
 
+enable secret PXL
+service-password-encryption
+
+line vty 0 5
+password PXL
+login
+exit
+
+ipv6 unicast-routing
+
 ! Configuratie voor VLAN 1
 interface vlan 1
 ip address 192.168.1.2 255.255.255.0
 ipv6 address 2001:db8:1::2/64
 no shutdown
-
 exit
+
+line console 0
+password PXL
+login
